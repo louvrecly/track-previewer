@@ -1,7 +1,6 @@
 import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
-import Image from 'next/image';
 import { useMemo } from 'react';
 
 interface TrackInfoProps {
@@ -29,17 +28,6 @@ const TrackInfo = ({
 
   return (
     <Box sx={{ display: 'flex', gap: 3 }}>
-      {!album.images.length ? (
-        <Image src="/next.svg" width={100} height={100} alt={album.name} />
-      ) : (
-        <Image
-          src={album.images[0].url}
-          width={100}
-          height={100}
-          alt={album.name}
-        />
-      )}
-
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         <Typography sx={{ fontSize: 15 }}>
           Album:{' '}

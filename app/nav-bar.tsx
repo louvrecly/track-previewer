@@ -8,7 +8,7 @@ const NavBar = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
-        <Toolbar>
+        <Toolbar sx={{ paddingX: 3, paddingY: 1, gap: 1, flexWrap: 'wrap' }}>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Track Previewer
           </Typography>

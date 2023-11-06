@@ -1,6 +1,8 @@
+import dynamic from 'next/dynamic';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import dynamic from 'next/dynamic';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const TrackCard = dynamic(() => import('./track-card'));
 
@@ -9,15 +11,27 @@ interface TrackListProps {
 }
 
 const TrackList = ({ tracks }: TrackListProps) => {
-  if (!tracks.length)
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('sm'));
+
+  if (!tracks.length) {
     return (
       <Box>
         <Typography>No tracks found.</Typography>
       </Box>
     );
+  }
 
   return (
-    <Box sx={{ display: 'flex', gap: 5, flexDirection: 'column' }}>
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: matches ? 'row' : 'column',
+        gap: 3,
+        flexWrap: 'wrap',
+        justifyContent: 'centre',
+      }}
+    >
       {tracks.map((track) => (
         <TrackCard key={track.id} track={track} />
       ))}

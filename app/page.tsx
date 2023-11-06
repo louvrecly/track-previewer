@@ -7,9 +7,9 @@ import TrackList from './track-list';
 import Typography from '@mui/material/Typography';
 
 function loadTracks(query: string) {
-  return fetch(`${process.env.NEXT_PUBLIC_HOST_API_URL}/api/tracks?query=${query}`).then((res) =>
-    res.json(),
-  );
+  return fetch(
+    `${process.env.NEXT_PUBLIC_HOST_API_URL}/api/tracks?query=${query}`,
+  ).then((res) => res.json());
 }
 
 export default function Home() {
@@ -36,26 +36,26 @@ export default function Home() {
   }, [query]);
 
   if (!query)
-    <Box sx={{ padding: 5 }}>
+    <Box sx={{ padding: 3 }}>
       <Typography>Type something to search for tracks!</Typography>
     </Box>;
 
   if (isLoading)
     return (
-      <Box sx={{ padding: 5 }}>
+      <Box sx={{ padding: 3 }}>
         <Typography>Loading...</Typography>
       </Box>
     );
 
   if (error)
     return (
-      <Box sx={{ padding: 5 }}>
+      <Box sx={{ padding: 3 }}>
         <Typography>Error fetching data: {error}</Typography>
       </Box>
     );
 
   return (
-    <Box sx={{ padding: 5 }}>
+    <Box sx={{ padding: 3 }}>
       <TrackList tracks={tracks} />
     </Box>
   );
