@@ -7,7 +7,7 @@ import TrackList from './track-list';
 import Typography from '@mui/material/Typography';
 
 function loadTracks(query: string) {
-  return fetch(`http://localhost:3000/api/tracks?query=${query}`).then((res) =>
+  return fetch(`${process.env.NEXT_PUBLIC_HOST_API_URL}/api/tracks?query=${query}`).then((res) =>
     res.json(),
   );
 }
