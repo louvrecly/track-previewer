@@ -1,3 +1,4 @@
+/// <reference types="spotify-api" />
 import queryString from 'query-string';
 
 const clientId = process.env.SPOTIFY_CLIENT_ID;
@@ -29,7 +30,10 @@ async function getAccessToken() {
   return response.json();
 }
 
-export async function searchTracks(query: string, offset: number = 0) {
+export async function searchTracks(
+  query: string,
+  offset: number = 0,
+): Promise<SpotifyApi.SearchResponse> {
   const { access_token } = await getAccessToken();
 
   const res = await fetch(

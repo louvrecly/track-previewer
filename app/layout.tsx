@@ -1,8 +1,13 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Roboto } from 'next/font/google';
+import NavBar from './nav-bar';
+import SearchProvider from './contexts/search';
 import './globals.css';
 
-const inter = Inter({ subsets: ['latin'] });
+const roboto = Roboto({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '700'],
+});
 
 export const metadata: Metadata = {
   title: 'Track Previewer',
@@ -16,8 +21,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className} suppressHydrationWarning>
-        {children}
+      <body className={roboto.className} suppressHydrationWarning>
+        <SearchProvider>
+          <NavBar />
+
+          {children}
+        </SearchProvider>
       </body>
     </html>
   );
