@@ -9,6 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.14.17",
+    "@types/spotify-api": "^0.0.24",
     "next": "14.0.1",
     "query-string": "^8.1.0",
     "react": "^18",
