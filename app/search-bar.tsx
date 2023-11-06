@@ -1,17 +1,19 @@
 'use client';
 
+import { useRouter, useSearchParams } from 'next/navigation';
+import { FormEvent } from 'react';
 import InputBase from '@mui/material/InputBase';
 import Button from '@mui/material/Button';
-import { FormEvent, useContext } from 'react';
-import { SearchContext } from './contexts/search';
 
 const SearchBar = () => {
-  const { query, setQuery } = useContext(SearchContext);
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const query = searchParams.get('query');
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const { value } = (event.target as HTMLFormElement)[0] as HTMLInputElement;
-    setQuery(value);
+    router.push(value ? `?query=${value}` : '/');
   };
 
   return (

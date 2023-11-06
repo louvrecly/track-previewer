@@ -1,9 +1,9 @@
 'use client';
 
-import { useContext, useEffect, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import TrackList from './track-list';
-import { SearchContext } from './contexts/search';
 import Typography from '@mui/material/Typography';
 
 function loadTracks(query: string) {
@@ -13,7 +13,8 @@ function loadTracks(query: string) {
 }
 
 export default function Home() {
-  const { query } = useContext(SearchContext);
+  const searchParams = useSearchParams();
+  const query = searchParams.get('query');
 
   const [isLoading, setIsLoading] = useState(true);
   const [tracks, setTracks] = useState<SpotifyApi.TrackObjectFull[]>([]);
