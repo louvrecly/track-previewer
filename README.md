@@ -15,3 +15,4 @@ This is a track previewer allowing users to search for tracks available on Spoti
 - <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" width="20" style="vertical-align: middle" /> Next
 - <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" width="20" style="vertical-align: middle" /> TypeScript
 - <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/materialui/materialui-original.svg" width="20" style="vertical-align: middle" /> Material UI
+- <img src="https://open.spotifycdn.com/cdn/images/favicon.0f31d2ea.ico" width="20" style="vertical-align: middle" /> Spotify Web API
