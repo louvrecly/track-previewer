@@ -1,11 +1,13 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useMemo, useState } from 'react';
 import HomePageContainer from './container';
-import TrackList from './track-list';
-import Typography from '@mui/material/Typography';
-import PageControl from './page-control';
+
+const Typography = dynamic(() => import('@mui/material/Typography'));
+const TrackList = dynamic(() => import('./track-list'));
+const PageControl = dynamic(() => import('./page-control'));
 
 const LIMIT = 20;
 
@@ -25,7 +27,7 @@ export default function Home() {
 
   const [isLoading, setIsLoading] = useState(true);
   const [tracks, setTracks] = useState<SpotifyApi.TrackObjectFull[]>([]);
-  const [pageCount, setPageCount] = useState(0);
+  const [pageCount, setPageCount] = useState(1);
   const [error, setError] = useState('');
 
   const page = useMemo(
@@ -51,7 +53,7 @@ export default function Home() {
       .then(({ tracks }) => {
         if (tracks) {
           setTracks(tracks.items);
-          setPageCount(Math.ceil(tracks.total / tracks.limit));
+          setPageCount(Math.ceil(tracks.total / tracks.limit) || 1);
         }
       })
       .catch((err) => setError(err.message))
@@ -61,7 +63,7 @@ export default function Home() {
   if (!queryParam || isLoading || error)
     return (
       <HomePageContainer>
-        <Typography sx={{ textAlign: 'center' }}>{fallbackContent}</Typography>
+        <Typography>{fallbackContent}</Typography>
       </HomePageContainer>
     );
 

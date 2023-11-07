@@ -16,7 +16,7 @@ const HomePageContainer = ({ children }: HomePageContainerProps) => {
         flexGrow: 1,
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'stretch',
+        alignItems: 'center',
         placeContent: 'center',
       }}
     >
