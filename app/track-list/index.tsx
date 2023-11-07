@@ -1,9 +1,9 @@
 import dynamic from 'next/dynamic';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
+import TrackListContainer from './container';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
+const Typography = dynamic(() => import('@mui/material/Typography'));
 const TrackCard = dynamic(() => import('./track-card'));
 
 interface TrackListProps {
@@ -16,26 +16,18 @@ const TrackList = ({ tracks }: TrackListProps) => {
 
   if (!tracks.length) {
     return (
-      <Box>
+      <TrackListContainer>
         <Typography>No tracks found.</Typography>
-      </Box>
+      </TrackListContainer>
     );
   }
 
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        flexDirection: matches ? 'row' : 'column',
-        gap: 3,
-        flexWrap: 'wrap',
-        justifyContent: 'space-between',
-      }}
-    >
+    <TrackListContainer flexDirection={matches ? 'row' : 'column'}>
       {tracks.map((track) => (
         <TrackCard key={track.id} track={track} />
       ))}
-    </Box>
+    </TrackListContainer>
   );
 };
 

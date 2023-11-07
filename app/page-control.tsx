@@ -24,6 +24,7 @@ const PageControl = ({ query, currentPage, pageCount }: PageControlProps) => {
     <Box
       sx={{
         paddingY: 2,
+        width: '100%',
         display: 'flex',
         justifyContent: 'space-between',
         gap: 2,
