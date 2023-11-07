@@ -23,7 +23,7 @@ const TrackCard = ({ track }: TrackCardProp) => {
   );
 
   return (
-    <Card>
+    <Card sx={{ flexGrow: 1 }}>
       <Box
         sx={{
           minWidth: 275,
@@ -52,7 +52,12 @@ const TrackCard = ({ track }: TrackCardProp) => {
 
       {track.preview_url && (
         <Box>
-          <audio controls src={track.preview_url} title={track.name}></audio>
+          <audio
+            controls
+            src={track.preview_url}
+            title={track.name}
+            style={{ width: '100%' }}
+          ></audio>
         </Box>
       )}
     </Card>
