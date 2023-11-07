@@ -65,7 +65,6 @@ const TrackCard = ({ track }: TrackCardProp) => {
         sx={{
           padding: 1,
           flexGrow: 1,
-          backgroundColor: 'rgba(0, 0, 0, 0.87)',
           display: 'flex',
           justifyContent: 'stretch',
           alignItems: 'center',
