@@ -4,10 +4,10 @@ This is a track previewer allowing users to search for tracks available on Spoti
 
 ## 💡 Features
 
-- Search bar to search for tracks
+- Search bar to search for tracks using keywords
 - Shows a list of tracks available according to the search query
-- Shareable URL with search results
-- Responsive UI to the device width
+- Shareable URL with search results based on keyword and page query params
+- Responsive UI to the device-width
 
 ## ⚙️ Tech Stack
 
