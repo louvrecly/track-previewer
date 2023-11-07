@@ -21,7 +21,14 @@ const PageControl = ({ query, currentPage, pageCount }: PageControlProps) => {
   );
 
   return (
-    <Box sx={{ display: 'flex', justifyContent: 'space-between', gap: 2 }}>
+    <Box
+      sx={{
+        paddingY: 2,
+        display: 'flex',
+        justifyContent: 'space-between',
+        gap: 2,
+      }}
+    >
       <Link href={generatePageLink(currentPage - 1)}>
         <Typography sx={{ color: currentPage === 1 ? 'gray' : 'springgreen' }}>
           &lt;&nbsp;Previous

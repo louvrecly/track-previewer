@@ -30,6 +30,10 @@ const TrackCard = ({ track }: TrackCardProp) => {
         flexDirection: 'column',
         alignItems: 'stretch',
         flexGrow: 1,
+        maxWidth: matches ? 'calc(50% - 24px)' : 'unset',
+        backgroundColor: 'rgb(18, 18, 18)',
+        color: 'white',
+        overflow: 'hidden',
       }}
     >
       <Box
@@ -46,7 +50,7 @@ const TrackCard = ({ track }: TrackCardProp) => {
           title={track.album.name}
         />
 
-        <CardContent sx={{ flexGrow: 1 }}>
+        <CardContent sx={{ padding: 2, flex: 1 }}>
           <TrackInfo
             trackName={track.name}
             trackUrl={track.external_urls.spotify}

@@ -29,6 +29,7 @@ const TrackInfo = ({
   return (
     <Box
       sx={{
+        flexGrow: 1,
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'stretch',
@@ -40,14 +41,14 @@ const TrackInfo = ({
         <Link
           href={album.external_urls.spotify}
           target="_blank"
-          sx={{ fontWeight: 'bold' }}
+          sx={{ fontWeight: 'bold', textDecoration: 'none' }}
         >
           {album.name}
         </Link>
       </Typography>
 
-      <Typography sx={{ fontWeight: 'bold', fontSize: 20 }}>
-        <Link href={trackUrl} target="_blank">
+      <Typography sx={{ flexGrow: 1, fontWeight: 'bold', fontSize: 16 }}>
+        <Link href={trackUrl} target="_blank" sx={{ textDecoration: 'none' }}>
           {trackName}
         </Link>
       </Typography>
@@ -71,7 +72,7 @@ const TrackInfo = ({
                 <Link
                   href={artist.external_urls.spotify}
                   target="_blank"
-                  sx={{ fontWeight: 'bold' }}
+                  sx={{ fontWeight: 'bold', textDecoration: 'none' }}
                 >
                   {artist.name}
                 </Link>
@@ -81,7 +82,7 @@ const TrackInfo = ({
         </Typography>
 
         <Typography sx={{ fontSize: 12 }}>
-          {trackDuration.durationInMinutes}:
+          {trackDuration.durationInMinutes.toString().padStart(2, '0')}:
           {trackDuration.remainderSeconds.toString().padStart(2, '0')}
         </Typography>
       </Box>

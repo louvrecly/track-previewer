@@ -29,7 +29,7 @@ const TrackList = ({ tracks }: TrackListProps) => {
         flexDirection: matches ? 'row' : 'column',
         gap: 3,
         flexWrap: 'wrap',
-        justifyContent: 'centre',
+        justifyContent: 'space-between',
       }}
     >
       {tracks.map((track) => (
