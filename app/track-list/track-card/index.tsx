@@ -3,6 +3,7 @@ import { useMemo } from 'react';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
 import TrackInfo from './track-info';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
@@ -23,14 +24,20 @@ const TrackCard = ({ track }: TrackCardProp) => {
   );
 
   return (
-    <Card sx={{ flexGrow: 1 }}>
+    <Card
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'stretch',
+        flexGrow: 1,
+      }}
+    >
       <Box
         sx={{
           minWidth: 275,
           display: 'flex',
           flexDirection: matches ? 'row' : 'column',
           alignItems: 'stretch',
-          flexBasis: matches ? 400 : 'auto',
         }}
       >
         <CardMedia
@@ -39,7 +46,7 @@ const TrackCard = ({ track }: TrackCardProp) => {
           title={track.album.name}
         />
 
-        <CardContent sx={{ flex: 1 }}>
+        <CardContent sx={{ flexGrow: 1 }}>
           <TrackInfo
             trackName={track.name}
             trackUrl={track.external_urls.spotify}
@@ -50,16 +57,32 @@ const TrackCard = ({ track }: TrackCardProp) => {
         </CardContent>
       </Box>
 
-      {track.preview_url && (
-        <Box>
+      <Box
+        sx={{
+          padding: 1,
+          flexGrow: 1,
+          backgroundColor: 'rgba(0, 0, 0, 0.87)',
+          display: 'flex',
+          justifyContent: 'stretch',
+          alignItems: 'center',
+        }}
+      >
+        {!track.preview_url ? (
+          <Typography
+            sx={{ flexGrow: 1, fontWeight: 'bold', textAlign: 'center' }}
+            color="white"
+          >
+            ⚠️ Preview not available
+          </Typography>
+        ) : (
           <audio
             controls
             src={track.preview_url}
             title={track.name}
             style={{ width: '100%' }}
           ></audio>
-        </Box>
-      )}
+        )}
+      </Box>
     </Card>
   );
 };

@@ -36,26 +36,26 @@ export default function Home() {
   }, [query]);
 
   if (!query)
-    <Box sx={{ padding: 3 }}>
+    <Box sx={{ marginX: 'auto', padding: 3, maxWidth: 1024 }}>
       <Typography>Type something to search for tracks!</Typography>
     </Box>;
 
   if (isLoading)
     return (
-      <Box sx={{ padding: 3 }}>
+      <Box sx={{ marginX: 'auto', padding: 3, maxWidth: 1024 }}>
         <Typography>Loading...</Typography>
       </Box>
     );
 
   if (error)
     return (
-      <Box sx={{ padding: 3 }}>
-        <Typography>Error fetching data: {error}</Typography>
+      <Box sx={{ marginX: 'auto', padding: 3, maxWidth: 1024 }}>
+        <Typography>⚠️ Error fetching data: {error}</Typography>
       </Box>
     );
 
   return (
-    <Box sx={{ padding: 3 }}>
+    <Box sx={{ marginX: 'auto', padding: 3, maxWidth: 1024 }}>
       <TrackList tracks={tracks} />
     </Box>
   );

@@ -27,27 +27,40 @@ const TrackInfo = ({
   }, [durationMs]);
 
   return (
-    <Box sx={{ display: 'flex', gap: 3 }}>
-      <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-        <Typography sx={{ fontSize: 15 }}>
-          Album:{' '}
-          <Link href={album.external_urls.spotify} target="_blank">
-            {album.name}
-          </Link>
-        </Typography>
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'stretch',
+        gap: 1,
+      }}
+    >
+      <Typography sx={{ fontSize: 12 }}>
+        Album:{' '}
+        <Link
+          href={album.external_urls.spotify}
+          target="_blank"
+          sx={{ fontWeight: 'bold' }}
+        >
+          {album.name}
+        </Link>
+      </Typography>
 
-        <Typography sx={{ fontSize: 20 }}>
-          <Link href={trackUrl} target="_blank">
-            {trackName}
-          </Link>
-        </Typography>
+      <Typography sx={{ fontWeight: 'bold', fontSize: 20 }}>
+        <Link href={trackUrl} target="_blank">
+          {trackName}
+        </Link>
+      </Typography>
 
-        <Typography sx={{ fontSize: 10 }}>
-          {trackDuration.durationInMinutes}:
-          {trackDuration.remainderSeconds.toString().padStart(2, '0')}
-        </Typography>
-
-        <Typography sx={{ fontSize: 10 }}>
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          flexWrap: 'wrap',
+          gap: 1,
+        }}
+      >
+        <Typography sx={{ fontSize: 12 }}>
           By{' '}
           {!artists.length ? (
             <span>unknown artist</span>
@@ -55,12 +68,21 @@ const TrackInfo = ({
             artists.map((artist, idx) => (
               <span key={artist.id}>
                 {!!idx && ', '}
-                <Link href={artist.external_urls.spotify} target="_blank">
+                <Link
+                  href={artist.external_urls.spotify}
+                  target="_blank"
+                  sx={{ fontWeight: 'bold' }}
+                >
                   {artist.name}
                 </Link>
               </span>
             ))
           )}
+        </Typography>
+
+        <Typography sx={{ fontSize: 12 }}>
+          {trackDuration.durationInMinutes}:
+          {trackDuration.remainderSeconds.toString().padStart(2, '0')}
         </Typography>
       </Box>
     </Box>

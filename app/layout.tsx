@@ -9,7 +9,7 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: 'Track Previewer',
+  title: '🎸 Track Previewer',
   description: 'Preview tracks available on Spotify',
 };
 
