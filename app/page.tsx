@@ -2,7 +2,7 @@
 
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useMemo, useState } from 'react';
-import Box from '@mui/material/Box';
+import HomePageContainer from './container';
 import TrackList from './track-list';
 import Typography from '@mui/material/Typography';
 import PageControl from './page-control';
@@ -60,13 +60,13 @@ export default function Home() {
 
   if (!queryParam || isLoading || error)
     return (
-      <Box sx={{ marginX: 'auto', padding: 3, maxWidth: 1024 }}>
-        <Typography>{fallbackContent}</Typography>
-      </Box>
+      <HomePageContainer>
+        <Typography sx={{ textAlign: 'center' }}>{fallbackContent}</Typography>
+      </HomePageContainer>
     );
 
   return (
-    <Box sx={{ marginX: 'auto', padding: 3, maxWidth: 1024 }}>
+    <HomePageContainer>
       <TrackList tracks={tracks} />
 
       <PageControl
@@ -74,6 +74,6 @@ export default function Home() {
         currentPage={page}
         pageCount={pageCount}
       />
-    </Box>
+    </HomePageContainer>
   );
 }
