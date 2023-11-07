@@ -33,6 +33,13 @@ export default function Home() {
     [pageParam],
   );
 
+  const fallbackContent = useMemo(() => {
+    if (!queryParam) return 'Type something to search for tracks!';
+    if (isLoading) return 'Loading...';
+    if (error) return `⚠️ Error fetching data: ${error}`;
+    return '';
+  }, [error, isLoading, queryParam]);
+
   useEffect(() => {
     if (!queryParam) {
       return setIsLoading(false);
@@ -51,22 +58,10 @@ export default function Home() {
       .finally(() => setIsLoading(false));
   }, [page, queryParam]);
 
-  if (!queryParam)
-    <Box sx={{ marginX: 'auto', padding: 3, maxWidth: 1024 }}>
-      <Typography>Type something to search for tracks!</Typography>
-    </Box>;
-
-  if (isLoading)
+  if (!queryParam || isLoading || error)
     return (
       <Box sx={{ marginX: 'auto', padding: 3, maxWidth: 1024 }}>
-        <Typography>Loading...</Typography>
-      </Box>
-    );
-
-  if (error)
-    return (
-      <Box sx={{ marginX: 'auto', padding: 3, maxWidth: 1024 }}>
-        <Typography>⚠️ Error fetching data: {error}</Typography>
+        <Typography>{fallbackContent}</Typography>
       </Box>
     );
 
