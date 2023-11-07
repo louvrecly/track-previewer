@@ -23,7 +23,7 @@ const SearchBar = () => {
         <InputBase
           sx={{
             flex: 1,
-            paddingX: 3,
+            paddingX: 1,
             backgroundColor: 'white',
             borderTopLeftRadius: 3,
             borderBottomLeftRadius: 3,
