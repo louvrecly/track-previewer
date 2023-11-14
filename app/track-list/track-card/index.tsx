@@ -1,9 +1,9 @@
 import dynamic from 'next/dynamic';
 import { useMemo } from 'react';
-import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
+import TrackCardContainer from './container';
 import TrackInfo from './track-info';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
@@ -24,18 +24,7 @@ const TrackCard = ({ track }: TrackCardProp) => {
   );
 
   return (
-    <Card
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'stretch',
-        flexGrow: 1,
-        maxWidth: matches ? 'calc(50% - 24px)' : 'unset',
-        backgroundColor: 'rgb(18, 18, 18)',
-        color: 'white',
-        overflow: 'hidden',
-      }}
-    >
+    <TrackCardContainer width={matches ? 'calc(50% - 24px)' : 'auto'}>
       <Box
         sx={{
           minWidth: 275,
@@ -86,7 +75,7 @@ const TrackCard = ({ track }: TrackCardProp) => {
           ></audio>
         )}
       </Box>
-    </Card>
+    </TrackCardContainer>
   );
 };
 

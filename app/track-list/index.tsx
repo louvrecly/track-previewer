@@ -1,10 +1,13 @@
 import dynamic from 'next/dynamic';
 import TrackListContainer from './container';
+import TrackCardLoading from './track-card/loading';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 const Typography = dynamic(() => import('@mui/material/Typography'));
-const TrackCard = dynamic(() => import('./track-card'));
+const TrackCard = dynamic(() => import('./track-card'), {
+  loading: () => <TrackCardLoading />,
+});
 
 interface TrackListProps {
   tracks: SpotifyApi.TrackObjectFull[];
