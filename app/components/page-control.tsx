@@ -23,7 +23,7 @@ const PageControl = ({ query, currentPage, pageCount }: PageControlProps) => {
   return (
     <Box
       sx={{
-        paddingY: 2,
+        py: 2,
         width: '100%',
         display: 'flex',
         justifyContent: 'space-between',
@@ -31,7 +31,13 @@ const PageControl = ({ query, currentPage, pageCount }: PageControlProps) => {
       }}
     >
       <Link href={generatePageLink(currentPage - 1)}>
-        <Typography sx={{ color: currentPage === 1 ? 'gray' : 'springgreen' }}>
+        <Typography
+          align="left"
+          sx={{
+            width: 80,
+            color: currentPage === 1 ? 'grey.700' : 'success.light',
+          }}
+        >
           &lt;&nbsp;Previous
         </Typography>
       </Link>
@@ -47,9 +53,10 @@ const PageControl = ({ query, currentPage, pageCount }: PageControlProps) => {
         {pages.map((page) => (
           <Link key={page} href={generatePageLink(page)}>
             <Typography
+              align="center"
               sx={{
-                color: 'springgreen',
-                fontWeight: page === currentPage ? 'bold' : 'normal',
+                color: 'success.light',
+                fontWeight: currentPage === page ? 'bold' : 'normal',
               }}
             >
               {page}
@@ -60,7 +67,11 @@ const PageControl = ({ query, currentPage, pageCount }: PageControlProps) => {
 
       <Link href={generatePageLink(currentPage + 1)}>
         <Typography
-          sx={{ color: currentPage === pageCount ? 'gray' : 'springgreen' }}
+          align="right"
+          sx={{
+            width: 80,
+            color: currentPage === pageCount ? 'grey.700' : 'success.light',
+          }}
         >
           Next&nbsp;&gt;
         </Typography>

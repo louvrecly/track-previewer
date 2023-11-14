@@ -7,7 +7,7 @@ import HomePageContainer from './container';
 
 const Typography = dynamic(() => import('@mui/material/Typography'));
 const TrackList = dynamic(() => import('./track-list'));
-const PageControl = dynamic(() => import('./page-control'));
+const PageControl = dynamic(() => import('./components/page-control'));
 
 const LIMIT = 20;
 
@@ -60,10 +60,10 @@ export default function Home() {
       .finally(() => setIsLoading(false));
   }, [page, queryParam]);
 
-  if (!queryParam || isLoading || error)
+  if (!!fallbackContent)
     return (
       <HomePageContainer>
-        <Typography>{fallbackContent}</Typography>
+        <Typography variant="h6">{fallbackContent}</Typography>
       </HomePageContainer>
     );
 
