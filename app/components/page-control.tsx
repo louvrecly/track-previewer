@@ -22,8 +22,9 @@ const PageControl = ({ query, currentPage, pageCount }: PageControlProps) => {
 
   return (
     <Box
+      maxWidth={1024}
       sx={{
-        py: 2,
+        p: 2,
         width: '100%',
         display: 'flex',
         justifyContent: 'space-between',
@@ -36,6 +37,10 @@ const PageControl = ({ query, currentPage, pageCount }: PageControlProps) => {
           sx={{
             width: 80,
             color: currentPage === 1 ? 'grey.700' : 'success.light',
+            opacity: currentPage === 1 ? 1 : 0.7,
+            '&:hover': {
+              opacity: 1,
+            },
           }}
         >
           &lt;&nbsp;Previous
@@ -44,6 +49,7 @@ const PageControl = ({ query, currentPage, pageCount }: PageControlProps) => {
 
       <Box
         sx={{
+          flexGrow: 1,
           display: 'flex',
           justifyContent: 'space-between',
           gap: 2,
@@ -57,6 +63,10 @@ const PageControl = ({ query, currentPage, pageCount }: PageControlProps) => {
               sx={{
                 color: 'success.light',
                 fontWeight: currentPage === page ? 'bold' : 'normal',
+                opacity: currentPage === page ? 1 : 0.7,
+                '&:hover': {
+                  opacity: 1,
+                },
               }}
             >
               {page}
@@ -71,6 +81,10 @@ const PageControl = ({ query, currentPage, pageCount }: PageControlProps) => {
           sx={{
             width: 80,
             color: currentPage === pageCount ? 'grey.700' : 'success.light',
+            opacity: currentPage === pageCount ? 1 : 0.7,
+            '&:hover': {
+              opacity: 1,
+            },
           }}
         >
           Next&nbsp;&gt;
