@@ -6,7 +6,7 @@ import { useEffect, useMemo, useState } from 'react';
 import HomePageContainer from './container';
 
 const Typography = dynamic(() => import('@mui/material/Typography'));
-const TrackList = dynamic(() => import('./track-list'));
+const TrackList = dynamic(() => import('./components/track-list'));
 const PageControl = dynamic(() => import('./components/page-control'));
 
 const LIMIT = 20;

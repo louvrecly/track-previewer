@@ -1,7 +1,8 @@
-import Box from '@mui/material/Box';
-import Link from '@mui/material/Link';
-import Typography from '@mui/material/Typography';
 import { useMemo } from 'react';
+import Stack from '@mui/material/Stack';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import StyledLink from '../../styled-link';
 
 interface TrackInfoProps {
   trackName: string;
@@ -27,41 +28,26 @@ const TrackInfo = ({
   }, [durationMs]);
 
   return (
-    <Box
-      sx={{
-        flexGrow: 1,
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'stretch',
-        gap: 1,
-      }}
-    >
-      <Typography sx={{ fontSize: 12 }}>
+    <Stack spacing={1}>
+      <Typography variant="subtitle2">
         Album:{' '}
-        <Link
+        <StyledLink
           href={album.external_urls.spotify}
           target="_blank"
-          sx={{ fontWeight: 'bold', textDecoration: 'none' }}
+          sx={{ fontWeight: 'bold' }}
         >
           {album.name}
-        </Link>
+        </StyledLink>
       </Typography>
 
-      <Typography sx={{ flexGrow: 1, fontWeight: 'bold', fontSize: 16 }}>
-        <Link href={trackUrl} target="_blank" sx={{ textDecoration: 'none' }}>
+      <Typography variant="subtitle1" sx={{ fontWeight: 'bold' }}>
+        <StyledLink href={trackUrl} target="_blank">
           {trackName}
-        </Link>
+        </StyledLink>
       </Typography>
 
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          flexWrap: 'wrap',
-          gap: 1,
-        }}
-      >
-        <Typography sx={{ fontSize: 12 }}>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+        <Typography variant="subtitle2">
           By{' '}
           {!artists.length ? (
             <span>unknown artist</span>
@@ -69,24 +55,24 @@ const TrackInfo = ({
             artists.map((artist, idx) => (
               <span key={artist.id}>
                 {!!idx && ', '}
-                <Link
+                <StyledLink
                   href={artist.external_urls.spotify}
                   target="_blank"
-                  sx={{ fontWeight: 'bold', textDecoration: 'none' }}
+                  sx={{ fontWeight: 'bold' }}
                 >
                   {artist.name}
-                </Link>
+                </StyledLink>
               </span>
             ))
           )}
         </Typography>
 
-        <Typography sx={{ fontSize: 12 }}>
+        <Typography variant="subtitle2">
           {trackDuration.durationInMinutes.toString().padStart(2, '0')}:
           {trackDuration.remainderSeconds.toString().padStart(2, '0')}
         </Typography>
       </Box>
-    </Box>
+    </Stack>
   );
 };
 
