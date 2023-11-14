@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
 import CssBaseline from '@mui/material/CssBaseline';
-import NavBar from './nav-bar';
+import NavBar from './components/nav-bar';
 import './globals.css';
 
 const roboto = Roboto({

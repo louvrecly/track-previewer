@@ -3,7 +3,7 @@
 import { useRouter, useSearchParams } from 'next/navigation';
 import { FormEvent } from 'react';
 import Box from '@mui/material/Box';
-import InputBase from '@mui/material/InputBase';
+import StyledTextField from '@/app/components/styled-text-field';
 import Button from '@mui/material/Button';
 
 const SearchBar = () => {
@@ -19,18 +19,19 @@ const SearchBar = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
-        <InputBase
-          sx={{
-            flex: 1,
-            paddingX: 1,
-            backgroundColor: 'white',
-            borderTopLeftRadius: 3,
-            borderBottomLeftRadius: 3,
-          }}
-          placeholder="Type something here..."
-          inputProps={{ 'aria-label': 'search' }}
+      <Box sx={{ display: 'flex' }}>
+        <StyledTextField
+          id="keyword"
+          label="Search"
+          variant="outlined"
+          color="success"
           defaultValue={query}
+          sx={{
+            '& fieldset': {
+              borderTopRightRadius: 0,
+              borderBottomRightRadius: 0,
+            },
+          }}
         />
 
         <Button

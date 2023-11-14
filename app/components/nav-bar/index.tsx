@@ -1,23 +1,14 @@
-import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import SearchBar from './search-bar';
+import StyledAppBar from '../styled-app-bar';
+import StyledToolBar from '../styled-tool-bar';
 
 const NavBar = () => {
   return (
-    <AppBar position="sticky" sx={{ backgroundColor: 'rgba(40, 20, 50, 0.9)' }}>
+    <StyledAppBar position="sticky">
       <Box>
-        <Toolbar
-          sx={{
-            marginX: 'auto',
-            paddingX: 3,
-            paddingY: 1,
-            maxWidth: 1024,
-            gap: 1,
-            flexWrap: 'wrap',
-          }}
-        >
+        <StyledToolBar>
           <Typography
             variant="h6"
             component="div"
@@ -27,9 +18,9 @@ const NavBar = () => {
           </Typography>
 
           <SearchBar />
-        </Toolbar>
+        </StyledToolBar>
       </Box>
-    </AppBar>
+    </StyledAppBar>
   );
 };
 
