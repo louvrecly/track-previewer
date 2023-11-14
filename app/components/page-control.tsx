@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import Box from '@mui/material/Box';
-import Link from 'next/link';
 import Typography from '@mui/material/Typography';
+import StyledLink from './styled-link';
 
 interface PageControlProps {
   query: string;
@@ -30,7 +30,7 @@ const PageControl = ({ query, currentPage, pageCount }: PageControlProps) => {
         gap: 2,
       }}
     >
-      <Link href={generatePageLink(currentPage - 1)}>
+      <StyledLink href={generatePageLink(currentPage - 1)}>
         <Typography
           align="left"
           sx={{
@@ -40,7 +40,7 @@ const PageControl = ({ query, currentPage, pageCount }: PageControlProps) => {
         >
           &lt;&nbsp;Previous
         </Typography>
-      </Link>
+      </StyledLink>
 
       <Box
         sx={{
@@ -51,7 +51,7 @@ const PageControl = ({ query, currentPage, pageCount }: PageControlProps) => {
         }}
       >
         {pages.map((page) => (
-          <Link key={page} href={generatePageLink(page)}>
+          <StyledLink key={page} href={generatePageLink(page)}>
             <Typography
               align="center"
               sx={{
@@ -61,11 +61,11 @@ const PageControl = ({ query, currentPage, pageCount }: PageControlProps) => {
             >
               {page}
             </Typography>
-          </Link>
+          </StyledLink>
         ))}
       </Box>
 
-      <Link href={generatePageLink(currentPage + 1)}>
+      <StyledLink href={generatePageLink(currentPage + 1)}>
         <Typography
           align="right"
           sx={{
@@ -75,7 +75,7 @@ const PageControl = ({ query, currentPage, pageCount }: PageControlProps) => {
         >
           Next&nbsp;&gt;
         </Typography>
-      </Link>
+      </StyledLink>
     </Box>
   );
 };
