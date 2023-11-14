@@ -21,7 +21,7 @@ const TrackCard = ({ track }: TrackCardProp) => {
       <CardMedia
         image={imageUrl}
         title={track.album.name}
-        sx={{ height: 140 }}
+        sx={{ pt: '56.25%' }}
       />
 
       <CardContent>
