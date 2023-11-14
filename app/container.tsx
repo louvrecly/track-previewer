@@ -1,28 +1,16 @@
-import { ReactNode } from 'react';
-import Box from '@mui/material/Box';
+import { styled } from '@mui/material/styles';
+import Box, { BoxProps } from '@mui/material/Box';
 
-interface HomePageContainerProps {
-  children?: ReactNode;
-}
-
-const HomePageContainer = ({ children }: HomePageContainerProps) => {
-  return (
-    <Box
-      sx={{
-        marginX: 'auto',
-        padding: 3,
-        width: '100%',
-        maxWidth: 1024,
-        flexGrow: 1,
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        placeContent: 'center',
-      }}
-    >
-      {children}
-    </Box>
-  );
-};
+const HomePageContainer = styled(Box)<BoxProps>(({ theme }) => ({
+  margin: '0 auto',
+  padding: theme.spacing(3),
+  width: '100%',
+  maxWidth: theme.spacing(1024),
+  flexGrow: 1,
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  placeContent: 'center',
+}));
 
 export default HomePageContainer;
