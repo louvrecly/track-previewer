@@ -6,14 +6,18 @@ import Box from '@mui/material/Box';
 import StyledTextField from '@/app/components/styled-text-field';
 import Button from '@mui/material/Button';
 
+type SearchBarFormSubmitEvent = FormEvent<HTMLFormElement> & {
+  target: HTMLFormElement & [HTMLInputElement];
+};
+
 const SearchBar = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const query = searchParams.get('query');
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: SearchBarFormSubmitEvent) => {
     event.preventDefault();
-    const { value } = (event.target as HTMLFormElement)[0] as HTMLInputElement;
+    const { value } = event.target[0];
     router.push(value ? `?query=${value}` : '/');
   };
 
